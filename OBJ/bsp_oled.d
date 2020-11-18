@@ -2,7 +2,7 @@
 ..\obj\bsp_oled.o: ..\PERIPH\inc\bsp_oled.h
 ..\obj\bsp_oled.o: ..\USER\stm32f4xx.h
 ..\obj\bsp_oled.o: ..\CORE\core_cm4.h
-..\obj\bsp_oled.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\bsp_oled.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\bsp_oled.o: ..\CORE\core_cmInstr.h
 ..\obj\bsp_oled.o: ..\CORE\core_cmFunc.h
 ..\obj\bsp_oled.o: ..\CORE\core_cm4_simd.h
@@ -38,12 +38,13 @@
 ..\obj\bsp_oled.o: ..\PERIPH\inc\oled_font.h
 ..\obj\bsp_oled.o: ..\HARDWARE\inc\drv_systick.h
 ..\obj\bsp_oled.o: ..\HARDWARE\inc\drv_i2c.h
-..\obj\bsp_oled.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\bsp_oled.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\bsp_oled.o: ..\USER\main.h
 ..\obj\bsp_oled.o: ..\USER\init.h
 ..\obj\bsp_oled.o: ..\HARDWARE\inc\drv_uart.h
-..\obj\bsp_oled.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdarg.h
+..\obj\bsp_oled.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 ..\obj\bsp_oled.o: ..\HARDWARE\inc\drv_nvic.h
+..\obj\bsp_oled.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\bsp_oled.o: ..\HARDWARE\inc\drv_can.h
 ..\obj\bsp_oled.o: ..\HARDWARE\inc\drv_gpio.h
 ..\obj\bsp_oled.o: ..\HARDWARE\inc\drv_timer.h

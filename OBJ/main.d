@@ -3,7 +3,7 @@
 ..\obj\main.o: init.h
 ..\obj\main.o: stm32f4xx.h
 ..\obj\main.o: ..\CORE\core_cm4.h
-..\obj\main.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\main.o: ..\CORE\core_cmInstr.h
 ..\obj\main.o: ..\CORE\core_cmFunc.h
 ..\obj\main.o: ..\CORE\core_cm4_simd.h
@@ -38,9 +38,10 @@
 ..\obj\main.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 ..\obj\main.o: ..\HARDWARE\inc\drv_systick.h
 ..\obj\main.o: ..\HARDWARE\inc\drv_uart.h
-..\obj\main.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdarg.h
-..\obj\main.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+..\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\main.o: ..\HARDWARE\inc\drv_nvic.h
+..\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\main.o: ..\HARDWARE\inc\drv_can.h
 ..\obj\main.o: ..\HARDWARE\inc\drv_gpio.h
 ..\obj\main.o: ..\HARDWARE\inc\drv_timer.h
@@ -54,3 +55,14 @@
 ..\obj\main.o: ..\USER\main.h
 ..\obj\main.o: ..\PERIPH\inc\bsp_led.h
 ..\obj\main.o: ..\PERIPH\inc\bsp_ad7190.h
+..\obj\main.o: free_rtos_test.h
+..\obj\main.o: ..\FreeRTOS\include\FreeRTOS.h
+..\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\main.o: ..\FreeRTOS\include\FreeRTOSConfig.h
+..\obj\main.o: ..\FreeRTOS\include\projdefs.h
+..\obj\main.o: ..\FreeRTOS\include\portable.h
+..\obj\main.o: ..\FreeRTOS\include\deprecated_definitions.h
+..\obj\main.o: ..\FreeRTOS\portable\portmacro.h
+..\obj\main.o: ..\FreeRTOS\include\mpu_wrappers.h
+..\obj\main.o: ..\PERIPH\inc\bsp_esc.h
+..\obj\main.o: ..\USE_DEMO\inc\demo_moto.h

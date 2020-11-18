@@ -1,8 +1,8 @@
-..\obj\pid.o: ..\CONNECTOR\PID\pid.c
-..\obj\pid.o: ..\CONNECTOR\PID\pid.h
+..\obj\pid.o: ..\MY_STOCK\pid.c
+..\obj\pid.o: ..\MY_STOCK\inc\pid.h
 ..\obj\pid.o: ..\USER\stm32f4xx.h
 ..\obj\pid.o: ..\CORE\core_cm4.h
-..\obj\pid.o: C:\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\pid.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\pid.o: ..\CORE\core_cmInstr.h
 ..\obj\pid.o: ..\CORE\core_cmFunc.h
 ..\obj\pid.o: ..\CORE\core_cm4_simd.h
@@ -35,12 +35,3 @@
 ..\obj\pid.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\pid.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\pid.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
-..\obj\pid.o: ..\CONNECTOR\PID\MATH_DEFINE.h
-..\obj\pid.o: ..\SYSTEM\delay\delay.h
-..\obj\pid.o: ..\SYSTEM\sys\sys.h
-..\obj\pid.o: ..\CONNECTOR\PID\user_math.h
-..\obj\pid.o: C:\ARM\ARMCC\Bin\..\include\stdio.h
-..\obj\pid.o: C:\ARM\ARMCC\Bin\..\include\math.h
-..\obj\pid.o: ..\SYSTEM\usart\usart.h
-..\obj\pid.o: ..\HARDWARE\LCD\lcd.h
-..\obj\pid.o: C:\ARM\ARMCC\Bin\..\include\stdlib.h

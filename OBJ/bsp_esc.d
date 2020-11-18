@@ -2,7 +2,7 @@
 ..\obj\bsp_esc.o: ..\PERIPH\inc\bsp_esc.h
 ..\obj\bsp_esc.o: ..\USER\stm32f4xx.h
 ..\obj\bsp_esc.o: ..\CORE\core_cm4.h
-..\obj\bsp_esc.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\bsp_esc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\bsp_esc.o: ..\CORE\core_cmInstr.h
 ..\obj\bsp_esc.o: ..\CORE\core_cmFunc.h
 ..\obj\bsp_esc.o: ..\CORE\core_cm4_simd.h
@@ -38,6 +38,7 @@
 ..\obj\bsp_esc.o: ..\HARDWARE\inc\drv_can.h
 ..\obj\bsp_esc.o: ..\HARDWARE\inc\drv_gpio.h
 ..\obj\bsp_esc.o: ..\HARDWARE\inc\drv_uart.h
-..\obj\bsp_esc.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdarg.h
-..\obj\bsp_esc.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\bsp_esc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+..\obj\bsp_esc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\bsp_esc.o: ..\HARDWARE\inc\drv_nvic.h
+..\obj\bsp_esc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

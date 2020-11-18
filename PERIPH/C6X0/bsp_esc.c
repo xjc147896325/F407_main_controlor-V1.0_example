@@ -26,6 +26,11 @@ uint8_t C620_SendCurrentVal(int16_t I1, int16_t I2, int16_t I3, int16_t I4);
 
 
 #include "bsp_esc.h"
+#include "drv_uart.h"
+
+#define CAN1_C620 1
+#define CAN1_C610 0
+
 
 C620_MotorInfomation_t     C620_MotorInfo[4] = {0};
 C610_MotorInfomation_t     C610_MotorInfo[4] = {0};

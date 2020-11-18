@@ -26,26 +26,25 @@ void System_Init(void)
 	
 	SystemInit();
 	NVIC_Priority_Init();
-	SysTick_Init();
+	SysTick_Init(168);
 	
 	USART1_Init(115200);
-	
-	
 	USART2_Init(115200);
+	CAN1_Init();
 	
-	
-	TIM2_Init(8399,9);
-	TIM3_Init(8399,9);
-	TIM4_PWM_Init(499, 83, GPIOB, GPIO_Pin_7);
-	TIM14_PWM_Init(499, 83, GPIOA, GPIO_Pin_7);
-	
+// TIM2_Init(8399,9);
+// TIM3_Init(8399,9);
+// TIM4_PWM_Init(499, 83, GPIOB, GPIO_Pin_7);
+// TIM14_PWM_Init(499, 83, GPIOA, GPIO_Pin_7);
+
 	Serial_Send(Serial1,"ready %s \r\n",&s);
+	Serial_Send(Serial2,"ready %s \r\n",&s);
 	
 //	drv_spi_init();
 //	Laser_Init();
 	LED_Init();
 	
-	delay_ms(500);
+//	delay_ms(500);
 	
 }
 

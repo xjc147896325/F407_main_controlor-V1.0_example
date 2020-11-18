@@ -2,7 +2,7 @@
 ..\obj\drv_systick.o: ..\HARDWARE\inc\drv_systick.h
 ..\obj\drv_systick.o: ..\USER\stm32f4xx.h
 ..\obj\drv_systick.o: ..\CORE\core_cm4.h
-..\obj\drv_systick.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\drv_systick.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\drv_systick.o: ..\CORE\core_cmInstr.h
 ..\obj\drv_systick.o: ..\CORE\core_cmFunc.h
 ..\obj\drv_systick.o: ..\CORE\core_cm4_simd.h
@@ -35,3 +35,13 @@
 ..\obj\drv_systick.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\drv_systick.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\drv_systick.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
+..\obj\drv_systick.o: ..\FreeRTOS\include\FreeRTOS.h
+..\obj\drv_systick.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\drv_systick.o: ..\FreeRTOS\include\FreeRTOSConfig.h
+..\obj\drv_systick.o: ..\FreeRTOS\include\projdefs.h
+..\obj\drv_systick.o: ..\FreeRTOS\include\portable.h
+..\obj\drv_systick.o: ..\FreeRTOS\include\deprecated_definitions.h
+..\obj\drv_systick.o: ..\FreeRTOS\portable\portmacro.h
+..\obj\drv_systick.o: ..\FreeRTOS\include\mpu_wrappers.h
+..\obj\drv_systick.o: ..\FreeRTOS\include\task.h
+..\obj\drv_systick.o: ..\FreeRTOS\include\list.h

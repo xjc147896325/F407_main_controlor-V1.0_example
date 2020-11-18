@@ -2,7 +2,7 @@
 ..\obj\drv_adc.o: ..\HARDWARE\inc\drv_adc.h
 ..\obj\drv_adc.o: ..\USER\stm32f4xx.h
 ..\obj\drv_adc.o: ..\CORE\core_cm4.h
-..\obj\drv_adc.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\drv_adc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\drv_adc.o: ..\CORE\core_cmInstr.h
 ..\obj\drv_adc.o: ..\CORE\core_cmFunc.h
 ..\obj\drv_adc.o: ..\CORE\core_cm4_simd.h
@@ -39,5 +39,6 @@
 ..\obj\drv_adc.o: ..\HARDWARE\inc\drv_nvic.h
 ..\obj\drv_adc.o: ..\HARDWARE\inc\drv_gpio.h
 ..\obj\drv_adc.o: ..\HARDWARE\inc\drv_uart.h
-..\obj\drv_adc.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdarg.h
-..\obj\drv_adc.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\drv_adc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+..\obj\drv_adc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\drv_adc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

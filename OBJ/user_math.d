@@ -1,8 +1,8 @@
-..\obj\user_math.o: ..\CONNECTOR\PID\user_math.c
-..\obj\user_math.o: ..\CONNECTOR\PID\user_math.h
+..\obj\user_math.o: ..\MY_STOCK\user_math.c
+..\obj\user_math.o: ..\MY_STOCK\inc\user_math.h
 ..\obj\user_math.o: ..\USER\stm32f4xx.h
 ..\obj\user_math.o: ..\CORE\core_cm4.h
-..\obj\user_math.o: C:\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\user_math.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\user_math.o: ..\CORE\core_cmInstr.h
 ..\obj\user_math.o: ..\CORE\core_cmFunc.h
 ..\obj\user_math.o: ..\CORE\core_cm4_simd.h
@@ -35,5 +35,3 @@
 ..\obj\user_math.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\user_math.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\user_math.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
-..\obj\user_math.o: C:\ARM\ARMCC\Bin\..\include\stdio.h
-..\obj\user_math.o: C:\ARM\ARMCC\Bin\..\include\math.h

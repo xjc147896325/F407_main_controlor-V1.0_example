@@ -2,7 +2,7 @@
 ..\obj\bsp_led.o: ..\PERIPH\inc\bsp_led.h
 ..\obj\bsp_led.o: ..\USER\stm32f4xx.h
 ..\obj\bsp_led.o: ..\CORE\core_cm4.h
-..\obj\bsp_led.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\bsp_led.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\bsp_led.o: ..\CORE\core_cmInstr.h
 ..\obj\bsp_led.o: ..\CORE\core_cmFunc.h
 ..\obj\bsp_led.o: ..\CORE\core_cm4_simd.h
@@ -37,6 +37,7 @@
 ..\obj\bsp_led.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 ..\obj\bsp_led.o: ..\HARDWARE\inc\drv_gpio.h
 ..\obj\bsp_led.o: ..\HARDWARE\inc\drv_uart.h
-..\obj\bsp_led.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdarg.h
-..\obj\bsp_led.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\bsp_led.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+..\obj\bsp_led.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\bsp_led.o: ..\HARDWARE\inc\drv_nvic.h
+..\obj\bsp_led.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

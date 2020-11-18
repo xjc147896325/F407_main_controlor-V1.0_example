@@ -47,7 +47,8 @@ typedef struct C610_MotorInfomation_t
 }C610_MotorInfomation_t;
 
 
-//extern MotorInfomation_t MotorInfo[];
+extern C620_MotorInfomation_t     C620_MotorInfo[4];
+extern C610_MotorInfomation_t     C610_MotorInfo[4];
 
 
 /*  Function used to get the feedback information from ESC on CAN bus *********/

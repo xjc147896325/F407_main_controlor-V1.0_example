@@ -112,9 +112,10 @@ void UsageFault_Handler(void)
   * @param  None
   * @retval None
   */
+/*
 void SVC_Handler(void)
 {
-}
+}*/
 
 /**
   * @brief  This function handles Debug Monitor exception.
@@ -130,22 +131,25 @@ void DebugMon_Handler(void)
   * @param  None
   * @retval None
   */
+/*
 void PendSV_Handler(void)
 {
-}
+}*/
 
 /**
   * @brief  This function handles SysTick Handler.
   * @param  None
   * @retval None
   */
+
+/*
 void SysTick_Handler(void)
 {
  if(E_COUNTER!=0)
 	{
 		E_COUNTER--;
 	}
-}
+}*/
 
 /******************************************************************************/
 /*                 STM32F4xx Peripherals Interrupt Handlers                   */
@@ -273,6 +277,10 @@ void CAN1_RX0_IRQHandler(void)
 		CAN_ClearITPendingBit(CAN1,CAN_IT_FF0);
 		CAN_ClearFlag (CAN1, CAN_IT_FF0);
 		CAN_Receive (CAN1, CAN_FIFO0 ,&RxMsg);
+        
+    
+        C620_GetMotorInfo(&RxMsg);
+    
 	}
 }
 

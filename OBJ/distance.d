@@ -2,7 +2,7 @@
 ..\obj\distance.o: ..\ALGORITHM\inc\distance.h
 ..\obj\distance.o: ..\USER\stm32f4xx.h
 ..\obj\distance.o: ..\CORE\core_cm4.h
-..\obj\distance.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\distance.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\distance.o: ..\CORE\core_cmInstr.h
 ..\obj\distance.o: ..\CORE\core_cmFunc.h
 ..\obj\distance.o: ..\CORE\core_cm4_simd.h
@@ -40,6 +40,7 @@
 ..\obj\distance.o: ..\HARDWARE\inc\drv_nvic.h
 ..\obj\distance.o: ..\HARDWARE\inc\drv_gpio.h
 ..\obj\distance.o: ..\HARDWARE\inc\drv_uart.h
-..\obj\distance.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdarg.h
-..\obj\distance.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdio.h
-..\obj\distance.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\math.h
+..\obj\distance.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+..\obj\distance.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\distance.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+..\obj\distance.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

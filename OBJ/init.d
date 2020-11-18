@@ -2,7 +2,7 @@
 ..\obj\init.o: init.h
 ..\obj\init.o: stm32f4xx.h
 ..\obj\init.o: ..\CORE\core_cm4.h
-..\obj\init.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\init.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\init.o: ..\CORE\core_cmInstr.h
 ..\obj\init.o: ..\CORE\core_cmFunc.h
 ..\obj\init.o: ..\CORE\core_cm4_simd.h
@@ -37,9 +37,10 @@
 ..\obj\init.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 ..\obj\init.o: ..\HARDWARE\inc\drv_systick.h
 ..\obj\init.o: ..\HARDWARE\inc\drv_uart.h
-..\obj\init.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdarg.h
-..\obj\init.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\init.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+..\obj\init.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\init.o: ..\HARDWARE\inc\drv_nvic.h
+..\obj\init.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\init.o: ..\HARDWARE\inc\drv_can.h
 ..\obj\init.o: ..\HARDWARE\inc\drv_gpio.h
 ..\obj\init.o: ..\HARDWARE\inc\drv_timer.h

@@ -2,7 +2,7 @@
 ..\obj\bsp_ad7190.o: ..\PERIPH\inc\bsp_ad7190.h
 ..\obj\bsp_ad7190.o: ..\USER\stm32f4xx.h
 ..\obj\bsp_ad7190.o: ..\CORE\core_cm4.h
-..\obj\bsp_ad7190.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\bsp_ad7190.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\bsp_ad7190.o: ..\CORE\core_cmInstr.h
 ..\obj\bsp_ad7190.o: ..\CORE\core_cmFunc.h
 ..\obj\bsp_ad7190.o: ..\CORE\core_cm4_simd.h
@@ -40,9 +40,10 @@
 ..\obj\bsp_ad7190.o: ..\USER\init.h
 ..\obj\bsp_ad7190.o: ..\HARDWARE\inc\drv_systick.h
 ..\obj\bsp_ad7190.o: ..\HARDWARE\inc\drv_uart.h
-..\obj\bsp_ad7190.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdarg.h
-..\obj\bsp_ad7190.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\bsp_ad7190.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+..\obj\bsp_ad7190.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\bsp_ad7190.o: ..\HARDWARE\inc\drv_nvic.h
+..\obj\bsp_ad7190.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\bsp_ad7190.o: ..\HARDWARE\inc\drv_can.h
 ..\obj\bsp_ad7190.o: ..\HARDWARE\inc\drv_gpio.h
 ..\obj\bsp_ad7190.o: ..\HARDWARE\inc\drv_timer.h

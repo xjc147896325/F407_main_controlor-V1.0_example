@@ -2,7 +2,7 @@
 ..\obj\drv_can.o: ..\HARDWARE\inc\drv_can.h
 ..\obj\drv_can.o: ..\USER\stm32f4xx.h
 ..\obj\drv_can.o: ..\CORE\core_cm4.h
-..\obj\drv_can.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\drv_can.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\drv_can.o: ..\CORE\core_cmInstr.h
 ..\obj\drv_can.o: ..\CORE\core_cmFunc.h
 ..\obj\drv_can.o: ..\CORE\core_cm4_simd.h
@@ -37,6 +37,7 @@
 ..\obj\drv_can.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 ..\obj\drv_can.o: ..\HARDWARE\inc\drv_gpio.h
 ..\obj\drv_can.o: ..\HARDWARE\inc\drv_uart.h
-..\obj\drv_can.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdarg.h
-..\obj\drv_can.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\drv_can.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+..\obj\drv_can.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\drv_can.o: ..\HARDWARE\inc\drv_nvic.h
+..\obj\drv_can.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

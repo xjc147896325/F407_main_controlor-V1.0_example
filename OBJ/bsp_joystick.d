@@ -2,7 +2,7 @@
 ..\obj\bsp_joystick.o: ..\PERIPH\inc\bsp_joystick.h
 ..\obj\bsp_joystick.o: ..\USER\stm32f4xx.h
 ..\obj\bsp_joystick.o: ..\CORE\core_cm4.h
-..\obj\bsp_joystick.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\bsp_joystick.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\bsp_joystick.o: ..\CORE\core_cmInstr.h
 ..\obj\bsp_joystick.o: ..\CORE\core_cmFunc.h
 ..\obj\bsp_joystick.o: ..\CORE\core_cm4_simd.h
@@ -36,8 +36,9 @@
 ..\obj\bsp_joystick.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\bsp_joystick.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 ..\obj\bsp_joystick.o: ..\HARDWARE\inc\drv_uart.h
-..\obj\bsp_joystick.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdarg.h
-..\obj\bsp_joystick.o: D:\KEIL5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\bsp_joystick.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+..\obj\bsp_joystick.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\bsp_joystick.o: ..\HARDWARE\inc\drv_nvic.h
+..\obj\bsp_joystick.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\bsp_joystick.o: ..\PERIPH\inc\bsp_led.h
 ..\obj\bsp_joystick.o: ..\HARDWARE\inc\drv_gpio.h

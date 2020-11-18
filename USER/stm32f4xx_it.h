@@ -41,7 +41,10 @@
 #include "bsp_led.h"
 #include "bsp_ad7190.h"
 #include "bsp_joystick.h"
+#include "bsp_esc.h"
+#include "bsp_robomodule.h"
 
+     
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
