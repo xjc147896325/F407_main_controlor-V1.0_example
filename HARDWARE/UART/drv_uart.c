@@ -13,6 +13,19 @@
   ******************************************************************************
   */
 
+
+/**
+  ******************************************************************************
+  * @file    uart.h
+  * @author  jOKERII, Shengnan Wang
+  * @version v1.2
+  * @date    20-11-18
+  * @brief   header
+  *        20-11-18 v1.2 增加对my_pirntf 的支持
+  ******************************************************************************
+  */
+	
+
 #include "drv_uart.h"
 
 /**
@@ -339,7 +352,25 @@ char *itoa(int value, char *string, int radix)
 	return TS_Buff ;
 }
 
+void my_printf(char* fmt,...)  
+{
+    
+ 
+    u16 i,j;
+    uint8_t USART_TX_BUF[100];
+    va_list ap;
+    va_start(ap,fmt);
 
+    vsprintf((char*)USART_TX_BUF,fmt,ap);
+    va_end(ap);
+    i=strlen((const char*)USART_TX_BUF);//此次发送数据的长度
+    for(j=0;j<i;j++)//循环发送数据
+    {
+      while(USART_GetFlagStatus(PRINTF_SERIAL,USART_FLAG_TC)!=SET)
+          ; //等待上次传输完成 
+        USART_SendData(PRINTF_SERIAL,USART_TX_BUF[j]);      //发送数据到串口3 
+    }
+}
 
 
 
