@@ -21,7 +21,10 @@
 
 TYPE_PlateRxInfo_t g_ControlPlateRx_t = {0};
 
-enum {None, USE_CAN1, USE_CAN2}CONNECT_CAN = DEFAULT_CONNECT_CAN;
+typedef enum {None, USE_CAN1, USE_CAN2}Tyep_Enum_CONNECT_CAN;
+
+Tyep_Enum_CONNECT_CAN enum_CONNECT_CAN = DEFAULT_CONNECT_CAN;
+
 uint8_t g_PLATE_ID = DEFAULT_PLATE_ID;
 
 
@@ -46,8 +49,6 @@ void ControlPlate_Info_Clear(void)
     g_ControlPlateRx_t.val4[1] = 0x00;
     g_ControlPlateRx_t.val4[2] = 0x00;
     g_ControlPlateRx_t.val4[3] = 0x00;
-    
-    
 }
 
 /**
@@ -89,9 +90,7 @@ uint8_t ControlPlate_GetFeedbackInfo(CanRxMsg* RxMsg)
             g_ControlPlateRx_t.val2[0]  = RxMsg -> Data[4];
             g_ControlPlateRx_t.val2[1]  = RxMsg -> Data[5];
             g_ControlPlateRx_t.val2[2]  = RxMsg -> Data[6];
-            g_ControlPlateRx_t.val2[3]  = RxMsg -> Data[7];
-            
-            
+            g_ControlPlateRx_t.val2[3]  = RxMsg -> Data[7];            
         }
         else if(cmd == PLATE_CMD_POSITION34)
         {
@@ -102,9 +101,7 @@ uint8_t ControlPlate_GetFeedbackInfo(CanRxMsg* RxMsg)
             g_ControlPlateRx_t.val4[0]  = RxMsg -> Data[4];
             g_ControlPlateRx_t.val4[1]  = RxMsg -> Data[5];
             g_ControlPlateRx_t.val4[2]  = RxMsg -> Data[6];
-            g_ControlPlateRx_t.val4[3]  = RxMsg -> Data[7];
-            
-         
+            g_ControlPlateRx_t.val4[3]  = RxMsg -> Data[7];         
         }
         else if (cmd == PLATE_CMD_CONTROL)
         {
@@ -165,20 +162,20 @@ uint8_t ControlPlate_SendData(uint16_t toWhere, uint8_t cmd, uint8_t *txData)
     TxMsg.Data[6] = txData[6];
     TxMsg.Data[7] = txData[7];
     
-    if(CONNECT_CAN == None)
+    if(enum_CONNECT_CAN == None)
     {
         return CAN_TxStatus_Failed;
     }
     
-    #if COULD_CAN_CHANGE
-    else if(CONNECT_CAN == USE_CAN2)
+    #if COULD_CONNECT_CAN_CHANGE
+    else if(enum_CONNECT_CAN == USE_CAN2)
     {
         MailBox = CAN_Transmit(CAN2, &TxMsg);
         if(MailBox == CAN_TxStatus_NoMailBox)
             return CAN_TxStatus_Failed;
         return CAN_TxStatus_Ok;
     }
-    else if(CONNECT_CAN == USE_CAN1)
+    else if(enum_CONNECT_CAN == USE_CAN1)
     {
         MailBox = CAN_Transmit(CAN1, &TxMsg);
         if(MailBox == CAN_TxStatus_NoMailBox)
@@ -191,13 +188,12 @@ uint8_t ControlPlate_SendData(uint16_t toWhere, uint8_t cmd, uint8_t *txData)
     }
 
     #else
-      #if CONNECT_CAN == USE_CAN2
-
+      #if enum_CONNECT_CAN == USE_CAN2
         MailBox = CAN_Transmit(CAN2, &TxMsg);
         if(MailBox == CAN_TxStatus_NoMailBox)
             return CAN_TxStatus_Failed;
         return CAN_TxStatus_Ok;
-      #elif CONNECT_CAN == USE_CAN1
+      #elif enum_CONNECT_CAN == USE_CAN1
         MailBox = CAN_Transmit(CAN1, &TxMsg);
         if(MailBox == CAN_TxStatus_NoMailBox)
             return CAN_TxStatus_Failed;
@@ -359,7 +355,7 @@ void ControlPlate_API_Change_ConnectCan(uint16_t i)
 {
     #if COULD_CONNECT_CAN_CHANGE
     if (i < 3)
-        CONNECT_CAN = i;
+        enum_CONNECT_CAN = (Tyep_Enum_CONNECT_CAN) i;
     #endif
 }
 

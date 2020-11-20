@@ -29,6 +29,11 @@
 #define IS_ESCID(id, min, max) \
 						(((int)id <= max) && ((int)id >= min))
 
+#define C620_API_SendCurrentVal  C620_SendCurrentVal
+#define C610_API_SendCurrentVal  C610_SendCurrentVal
+
+                        
+                        
 typedef struct C620_MotorInfomation_t
 {
 	uint16_t	AnglePulse;

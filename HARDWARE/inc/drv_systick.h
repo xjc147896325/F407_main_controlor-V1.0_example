@@ -6,7 +6,7 @@
 #define delay delay_ms
 #define SysTick_Init delay_init
 
-#define SYSTEM_SUPPORT_FREE_RTOS 1
+#define SYSTEM_SUPPORT_FREE_RTOS 0
 
 
 void delay_init(uint8_t SYSCLK);

@@ -20,13 +20,13 @@
 #include "control_plate_master.h"
 #include "control_plate.h"
 #define pass ;
-
-enum {PLATE_MASTER_MODE_NONE      ,
+#if PLATE_MASTER
+typedef enum {PLATE_MASTER_MODE_NONE      ,
       PLATE_MASTER_MODE_CONTROL   ,
       PLATE_MASTER_MODE_LOOPBACK  , 
-     }PLATE_MASTER_MODE = DEFAULT_PLATE_MASTER_MODE;
+     }TYPE_Enum_PLATE_MASTER_MODE;
 
-
+TYPE_Enum_PLATE_MASTER_MODE enum_PLATE_MASTER_MODE = DEFAULT_PLATE_MASTER_MODE;
 /**
   * @brief  发送速度到其它板子
   * @param  toWhere: 接收的板子的ID
@@ -110,17 +110,15 @@ uint8_t ControlPlate_API_SendMotoAngle    (uint16_t toWhere, int16_t moto1, int1
     return ControlPlate_SendData(toWhere, PLATE_CMD_ANGLE, (uint8_t*)txBuff);
 }
 
-
-
 void Plate_Master_Mode_Change(uint8_t i)
 {
     if( i < 3)
-        PLATE_MASTER_MODE = i;
+        enum_PLATE_MASTER_MODE = (TYPE_Enum_PLATE_MASTER_MODE)i;
 }
 
 uint8_t Plate_Master_Mode_Get(void)
 {
-    return (uint8_t) PLATE_MASTER_MODE;
+    return (uint8_t) enum_PLATE_MASTER_MODE;
 }
 
 void Plate_Master_Init(void)
@@ -147,7 +145,7 @@ void Plate_Master_Test(void)
 }
 
 
-
+#endif
 
 
 

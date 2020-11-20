@@ -7,17 +7,21 @@
 #include "task.h"
 #endif
 
-static uint8_t  fac_us = 0;							//us延时倍乘数			   
+static uint8_t  fac_us = 0;							//us延时倍乘数			
+
+#if SYSTEM_SUPPORT_FREE_RTOS
 static uint16_t fac_ms = 0;							//us延时倍乘数,在os下,代表每个节拍的ms数
-	
+#endif
 
 //systick中断服务函数,使用OS时用到
 void SysTick_Handler(void)
 {	
+    #if SYSTEM_SUPPORT_FREE_RTOS
 	if(xTaskGetSchedulerState()!=taskSCHEDULER_NOT_STARTED)
     {
         xPortSysTickHandler();
     }
+    #endif
 }
 
 			   
@@ -31,13 +35,16 @@ void delay_init(u8 SYSCLK)
     SysTick_CLKSourceConfig(SysTick_CLKSource_HCLK);
     fac_us = SYSCLK;
     reload = SYSCLK;
-    
+    #if SYSTEM_SUPPORT_FREE_RTOS
     reload *= 1000000/configTICK_RATE_HZ;       //168000
-	fac_ms  = 1000 / configTICK_RATE_HZ;	    //代表OS可以延时的最少单位	 1  
+	fac_ms  = 1000   /configTICK_RATE_HZ;	    //代表OS可以延时的最少单位	 1  
+    #else
+    reload *= 1000000/ 1000;       //168000
+    #endif
+    
 	SysTick->CTRL|=SysTick_CTRL_TICKINT_Msk;   	//开启SYSTICK中断
 	SysTick->LOAD=reload - 1; 					//每1/delay_ostickspersec秒中断一次	
 	SysTick->CTRL|=SysTick_CTRL_ENABLE_Msk; 	//开启SYSTICK    
-    
 }								    
 
 

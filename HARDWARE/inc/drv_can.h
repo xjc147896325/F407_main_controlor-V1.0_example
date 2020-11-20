@@ -1,10 +1,13 @@
 /**
   ******************************************************************************
-  * @file    drv_can.c
-  * @author  jOKERII
-  * @version v1.0
-  * @date    20-11-03
-  * @brief   
+  * @file    C620.h
+  * @author  jOKERII, WSN
+  * @version V1.1
+  * @date    20-11-19
+  * @brief    void CAN1_Init()
+			  void CAN2_Init()
+          20.11.19 V1.1 add can2 drv
+
   ******************************************************************************
   */
 

@@ -2,8 +2,8 @@
   *****************************************************************
   * @file    pid.c
   * @author  ShengNan Wang
-  * @version V1.2.0
-  * @date    2019.9.17
+  * @version V1.2.2
+  * @date    2020.2.2
   * @brief   PID控制相关
   *****************************************************************    
   * @更新说明:
@@ -246,7 +246,7 @@ TYPE_PID_DATA PID_cal_increment_output(pTYPE_PID_t pPID_t)
     else
     {
         outPutIncrement =   pPID_t -> Kp * (pPID_t -> err - pPID_t -> lastErr)
-                        +   pPID_t -> Ki * pPID_t -> err
+                        +   pPID_t -> Ki *  pPID_t -> err
                         +   pPID_t -> Kd * (pPID_t -> err - 2 * pPID_t -> lastErr + pPID_t -> preErr);
         // limite outPutIntegral
         if (outPutIncrement > pPID_t -> maxIncrease)
@@ -359,7 +359,7 @@ void pid_test(void)
     TYPE_PID_t  pid_t1, pid_t2;
     pTYPE_PID_t ppid_t1 = &pid_t1, ppid_t2 = &pid_t2;
     
-    PID_t_init(ppid_t1);    
+    PID_t_init(ppid_t1);
     PID_API_set_parameter(ppid_t1, 0.2, 0.2, 0, -1, -1, -1, -1);
     
     PID_t_init(ppid_t2);    
@@ -385,93 +385,4 @@ int main()
     
 }
 */
-
-//两个旧版本的函数,新版本可能出问题,以后参考
-/**
-  * @brief   计算偏差相关数据
-  * @param   
-  * @retval  
-  *          
-  *          
-  */
-/*
-void PID_cal_err(pTYPE_PID_t pPID_t)
-{
-    TYPE_PID_DATA current_err =  pPID_t -> reference - pPID_t -> feedBack ;
-    pPID_t -> preErr  = pPID_t -> lastErr;
-    pPID_t -> lastErr = pPID_t -> err    ;
-    pPID_t -> err     = current_err      ;
-    
-    // 积分计算               
-    pPID_t -> errIntegral += current_err;
-     if (pPID_t -> errIntegral > pPID_t -> maxIntegral )
-        pPID_t -> errIntegral = pPID_t -> maxIntegral;
-    else if (pPID_t -> errIntegral < -pPID_t -> maxIntegral )
-        pPID_t -> errIntegral = -pPID_t -> maxIntegral;
-    // 微分计算 
-
-    pPID_t -> errDifferential = current_err - pPID_t -> lastErr;
-   // 是否微分滤波
-    #if PID_DIFFERENTIAL_WAVE_FILTERING
-    {
-        ;
-    }
-    #endif
-    
-    
-    
-}*/
-
-/**
-  * @brief   计算PID输出值
-  * @param   
-  * @retval  
-  *          
-  *          
-  */
-  /*
-TYPE_PID_DATA PID_cal_output(pTYPE_PID_t pPID_t)
-{
-    TYPE_PID_DATA outPutPositon = 0.0f;
-    TYPE_PID_DATA outPutIncrement = 0.0f;    
-    
-    // 死区
-    if (pPID_t -> feedBack > pPID_t -> reference - pPID_t -> deadBand &&
-        pPID_t -> feedBack < pPID_t -> reference + pPID_t -> deadBand)
-    {
-            ;
-    }
-    //非死区
-    else
-    {
-        outPutPositon =    pPID_t -> Kp * pPID_t -> err                        +
-                           pPID_t -> Ki * pPID_t -> errIntegral                -
-                           pPID_t -> Kd * pPID_t -> errDifferential            ;
-                           
-        outPutIncrement =   pPID_t -> Kp * (pPID_t -> err - pPID_t -> lastErr)
-                        +   pPID_t -> Ki *  pPID_t -> err
-                        +   pPID_t -> Kd * (pPID_t -> err - 2 * pPID_t -> lastErr + pPID_t -> preErr);
-         
-        // limite outPutPositon
-        if (outPutPositon > pPID_t -> maxOutput)
-            outPutPositon = pPID_t -> maxOutput;
-        else if (outPutPositon < -pPID_t -> maxOutput)
-            outPutPositon = -pPID_t -> maxOutput;
-        
-        // limite outPutIntegral
-        if (outPutIncrement > pPID_t -> maxIncrease)
-            outPutIncrement = pPID_t -> maxIncrease;
-        else if (outPutIncrement < -pPID_t -> maxIncrease)
-            outPutIncrement = -pPID_t -> maxIncrease;  
-        pPID_t -> outPutPositon = outPutPositon;
-        pPID_t -> outPutIncrement = outPutIncrement;
-    }
-    
-    return pPID_t -> outPutPositon;
-}
-*/
-
-
-
-
 

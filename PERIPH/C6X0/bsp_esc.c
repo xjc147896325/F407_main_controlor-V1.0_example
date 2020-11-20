@@ -159,8 +159,6 @@ uint8_t C610_SendCurrentVal(int16_t I1, int16_t I2, int16_t I3, int16_t I4)
 	return CAN_TxStatus_Ok;
 }
 
-
-
 void Get_C620_MotorInfo(C620_MotorInfomation_t **Info)
 {
 	uint8_t i = 0;

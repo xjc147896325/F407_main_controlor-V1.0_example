@@ -6,6 +6,7 @@
 #include "bsp_led.h"
 
 //extern volatile uint8_t RemoteUpdated;
+extern uint8_t Joystick_Connect_Flag ;
 
 typedef struct Remote_t
 {

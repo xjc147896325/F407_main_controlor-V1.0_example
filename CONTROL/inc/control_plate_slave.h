@@ -4,18 +4,17 @@
 
 #include "control_plate.h"
 #include "control_plate_control.h"
+#include "control_plate_master.h"
 #include "bsp_led.h"
 #include "drv_uart.h"
 
 
 
 #if IS_USE_ORIGINAL_ESC
-#include "c610.h"
-#include "c620.h"
+#include "bsp_esc.h"
 #include "moto_control.h"
 #else
 /*“∆÷≤ ±”√*/
-
 #endif
 
 

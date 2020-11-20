@@ -1,6 +1,11 @@
-
 #ifndef __CONTROL_PLATE_H
 #define __CONTROL_PLATE_H
+
+
+
+
+
+
 
 
 #include "control_plate_connect.h"
@@ -8,26 +13,22 @@
 #include "control_plate_master.h"
 #include "control_plate_control.h"
 
-#define COULD_SALVE_CONTROL_MOTO 1         //能否控制电机
 
-#if COULD_SALVE_CONTROL_MOTO
-    #define IS_USE_ORIGINAL_ESC  0         //使用原来的电调文件
-#else
-    #define IS_USE_ORIGINAL_ESC  0         
-    //不能控制电机时电调控制屏蔽，无需更改
-#endif
+#define COULD_SALVE_CONTROL_MOTO 1         //能否控制电机
+#define IS_USE_ORIGINAL_ESC      1         //使用原来的电调文件
+
+
 
 #define IS_USE_ORIGINAL_JOYSTICK   0        //是还使用原来的手柄结构体
 #define COULD_RUN_SELF_FUNCTION    0        //能否接收运行自定义函数命令
-#define COULD_PLATE_ID_CHANGE      0        //能否动态更改控制版ID
-#define COULD_CONNECT_CAN_CHANGE   0        //能否动态更改连接的CAN
+#define COULD_PLATE_ID_CHANGE      1        //能否动态更改控制版ID
+#define COULD_CONNECT_CAN_CHANGE   1        //能否动态更改连接的CAN
 
-#define PLATE_MASTER               0        //作为主机
-#define PLATE_SLAVE                0        //作为从机
+#define PLATE_MASTER               1        //作为主机
+#define PLATE_SLAVE                1        //作为从机
 #define DEFAULT_PLATE_SLAVE_MODE   PLATE_SLAVE_MODE_LOOPBACK   //作为主机默认模式
 #define DEFAULT_PLATE_MASTER_MODE  PLATE_MASTER_MODE_LOOPBACK  //作为从机默认模式
-#define DEFAULT_MOTO_USE           C610                        //作为从机默认控制的电机
- 
+#define DEFAULT_MOTO_USE           C620                        //作为从机默认控制的电机
 
 #define DEFAULT_CONNECT_CAN  USE_CAN1       //使用的发CAN   USE_CAN1 USE_CAN2  None     
 #define DEFAULT_PLATE_ID     PLATE_ID_TEST  //板子ID        PALTE_ID_... A) - F0
@@ -40,7 +41,7 @@
                        
                        
 //相头的外部函数变量声明，用来减少warning, 不用动
-#if IS_USE_ORIGINAL_ESC
+#if IS_USE_ORIGINAL_ESC && PLATE_SLAVE
 extern void Plate_Set_Zore_Position(uint8_t mode, int32_t *pPosition);
 #endif
 
@@ -58,13 +59,16 @@ extern uint8_t ControlPlate_API_Plate_Run_Self_Function(uint8_t toWhere, uint8_t
 #if PLATE_MASTER
 extern void    Plate_Master_Mode_Change(uint8_t i) ;
 extern uint8_t Plate_Master_Mode_Get(void)         ;
+extern uint8_t ControlPlate_API_SendMotoSpeed    (uint16_t toWhere, int16_t moto1, int16_t moto2, int16_t moto3, int16_t moto4);
+extern uint8_t ControlPlate_API_SendMotoCurrent  (uint16_t toWhere, int16_t moto1, int16_t moto2, int16_t moto3, int16_t moto4);
+extern uint8_t ControlPlate_API_SendMotoPosition (uint16_t toWhere, int32_t moto1, int32_t moto2, int32_t moto3, int32_t moto4);
+extern uint8_t ControlPlate_API_SendMotoAngle    (uint16_t toWhere, int16_t moto1, int16_t moto2, int16_t moto3, int16_t moto4);
 #endif
 
 #if PLATE_SLAVE
 void    Plate_Slave_Mode_Change(uint8_t mode);
 uint8_t Plate_Slave_Mode_Get(void);
 #endif
-
 
 
 #endif

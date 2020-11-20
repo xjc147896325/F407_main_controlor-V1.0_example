@@ -11,11 +11,8 @@
 
 
 #if IS_USE_ORIGINAL_ESC
-#include "c610.h"
-#include "c620.h"
-#include "can.h"
-#include "can2.h"
-
+#include "bsp_esc.h"
+#include "drv_can.h"
 #else
 /*“∆÷≤ ±”√*/
 
@@ -79,7 +76,7 @@ void    ControlPlate_Deal_RespData(uint8_t* controlInfo);
 void    ControlPlate_Deal_Plate_Config(uint8_t changeWhat, uint16_t changeResult);
 void    Plate_Control_Test(void);
 
-#if IS_USE_ORIGINAL_ESC
+#if IS_USE_ORIGINAL_ESC && PLATE_SLAVE
 uint8_t ControlPlate_API_Set_610_P_0(uint16_t toWhere, uint8_t flag, int32_t* position);
 uint8_t ControlPlate_API_Stop_Moto(uint8_t toWhere, uint8_t num);
 
@@ -89,7 +86,7 @@ void    ControlPlate_Deal_Stop_Moto(uint8_t num);
 
 
 #if COULD_RUN_SELF_FUNCTION
-//extern void * g_p_Self_Funs[];
+extern void * g_p_Self_Funs[];
 void    ControlPlate_Deal_Run_Self_Fun(uint8_t* controlInfo);
 uint8_t ControlPlate_API_Plate_Run_Self_Function(uint8_t toWhere, uint8_t funNum, uint8_t* parameter);
 #endif

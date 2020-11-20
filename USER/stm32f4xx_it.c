@@ -198,7 +198,7 @@ void USART2_IRQHandler(void)
   */
 void USART3_IRQHandler(void)
 {
-	if(USART_GetFlagStatus(USART3, USART_IT_RXNE) != RESET);
+	if(USART_GetFlagStatus(USART3, USART_IT_RXNE) != RESET)
 	{
 		USART_ClearITPendingBit(USART3, USART_IT_RXNE);
 	}
@@ -211,7 +211,7 @@ void USART3_IRQHandler(void)
   */
 void USART6_IRQHandler(void)
 {
-	if(USART_GetFlagStatus(USART6, USART_IT_RXNE) != RESET);
+	if(USART_GetFlagStatus(USART6, USART_IT_RXNE) != RESET)
 	{
 		USART_ClearITPendingBit(USART6, USART_IT_RXNE);
 	}
@@ -278,11 +278,38 @@ void CAN1_RX0_IRQHandler(void)
 		CAN_ClearFlag (CAN1, CAN_IT_FF0);
 		CAN_Receive (CAN1, CAN_FIFO0 ,&RxMsg);
         
-    
+        
         C620_GetMotorInfo(&RxMsg);
+      //  C610_GetMotorInfo(&RxMsg);
+      //  ControlPlate_GetFeedbackInfo(&RxMsg);
     
 	}
 }
+void CAN2_TX_IRQHandler(void)
+{
+	if (CAN_GetITStatus(CAN2,CAN_IT_TME) != RESET)
+	{
+		CAN_ClearITPendingBit(CAN2,CAN_IT_TME);
+	}
+}
+
+void CAN2_RX0_IRQHandler(void)
+{
+	CanRxMsg RxMsg;
+	if(CAN_GetITStatus(CAN2,CAN_IT_FMP0) != RESET)
+	{
+		CAN_ClearITPendingBit(CAN2,CAN_IT_FF0);
+		CAN_ClearFlag (CAN2, CAN_IT_FF0);
+		CAN_Receive (CAN2, CAN_FIFO0 ,&RxMsg);
+        
+        
+      //  C620_GetMotorInfo(&RxMsg);
+      //  C610_GetMotorInfo(&RxMsg);
+      //  ControlPlate_GetFeedbackInfo(&RxMsg);
+    
+	}
+}
+
 
 
 

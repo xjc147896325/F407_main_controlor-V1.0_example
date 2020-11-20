@@ -54,7 +54,7 @@ void ControlPlate_API_Control_Task(void)
             ControlPlate_Deal_Run_Self_Fun(controlInfo);
         #endif
         
-        #if  IS_USE_ORIGINAL_ESC
+        #if  IS_USE_ORIGINAL_ESC && PLATE_SLAVE
         case CONTROL_SET_610_P_0:
             ControlPlate_Deal_Set_610_P_0(controlInfo);
             break;
@@ -195,7 +195,7 @@ uint8_t ControlPlate_Deal_ReqData(uint8_t reqId, uint8_t dataType, uint8_t num)
     #if IS_USE_ORIGINAL_ESC
     else if(dataType == REQ_DATA_MOTO_P_C610)
     {
-        *(int32_t*) (s + 4) = g_MotorInfo610_t[num].position;
+        // *(int32_t*) (s + 4) = g_MotorInfo610_t[num].position;
     }
     #endif
     return ControlPlate_SendData(reqId, PLATE_CMD_CONTROL, s);
@@ -211,10 +211,10 @@ uint8_t ControlPlate_Deal_ReqData(uint8_t reqId, uint8_t dataType, uint8_t num)
   * @retval 
   *
   */
+#if PLATE_SLAVE
 void ControlPlate_Deal_Set_610_P_0(uint8_t* controlInfo)
 {
     static int32_t positions[4] = {0};
-    
     if(controlInfo[1] == 0)
     {
         //以当前电调位置为0位
@@ -231,6 +231,7 @@ void ControlPlate_Deal_Set_610_P_0(uint8_t* controlInfo)
         Plate_Set_Zore_Position(0, positions);
     }
 }
+#endif
 
 /**
   * @brief  处理停止电机, 
@@ -243,7 +244,7 @@ void ControlPlate_Deal_Set_610_P_0(uint8_t* controlInfo)
   */
 void ControlPlate_Deal_Stop_Moto(uint8_t num)
 {
-    #if COULD_SALVE_CONTROL_MOTO
+    #if COULD_SALVE_CONTROL_MOTO && PALTE_SLAVE
     Plate_Slave_SetRunFlag(0);  
     #endif
 }
@@ -294,16 +295,16 @@ void ControlPlate_Deal_Plate_Config(uint8_t changeWhat, uint16_t changeResult)
            
         #if IS_USE_ORIGINAL_ESC
         case CONTROL_CHANGE_CAN1_USE:
-            CAN1_Use_Change(changeResult);
+          //  CAN1_Use_Change(changeResult);
             break;
         case CONTROL_CHANGE_CAN2_USE:
-            CAN2_Use_Change(changeResult);
+         //   CAN2_Use_Change(changeResult);
             break;
         case CONTROL_CHANGE_C610_CAN_USE:
-            C610_Can_Use_Change(changeResult);
+         //   C610_Can_Use_Change(changeResult);
             break;
         case CONTROL_CHANGE_C620_CAN_USE:
-            C620_Can_Use_Change(changeResult);
+         //   C620_Can_Use_Change(changeResult);
             break;
         #endif
         
@@ -323,7 +324,7 @@ void ControlPlate_Deal_Plate_Config(uint8_t changeWhat, uint16_t changeResult)
 void ControlPlate_Deal_RespData(uint8_t* controlInfo)
 {
     uint8_t dataType = controlInfo[1] & 0xF0;
-    uint8_t num      = controlInfo[1] & 0x0F;
+//    uint8_t num      = controlInfo[1] & 0x0F;
     
     if (dataType == REQ_DATA_JOYSTICK)
     {
@@ -608,10 +609,7 @@ void    ControlPlate_Deal_Run_Self_Fun(uint8_t* controlInfo)
 {
    
     //uint8_t run_num = controlInfo[1];
-  
     (*(void(*)(uint8_t*))g_p_Self_Funs[controlInfo[1]])(controlInfo + 2);   
-
-    
 }
 #endif
 

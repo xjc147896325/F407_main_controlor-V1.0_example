@@ -21,19 +21,25 @@
 //四个电机
 
 #include "control_plate_slave.h"
+#include "control_plate_master.h"
 
 
 #if IS_USE_ORIGINAL_ESC
 TYPE_Moto_t    g_Moto_Salve_t[4] = {0};
+C620_MotorInfomation_t* p_MotorInfo_ts    ;
+C610_MotorInfomation_t* p_MotorInfo610_ts ;
 #endif
 
 #if COULD_SALVE_CONTROL_MOTO
-int32_t        g_Zero_Positon[4] = {0};
+int32_t        g_Zero_Position[4] = {0};
 #endif
 
 #if COULD_SALVE_CONTROL_MOTO
 uint8_t g_slave_run_flag = 1;
 #endif
+
+#if PLATE_SLAVE
+
 
 typedef enum{ None, C610, C620}TYPE_Enum_MOTO_USE;
 typedef enum { PLATE_SLAVE_MODE_NONE      ,
@@ -50,15 +56,19 @@ TYPE_Enum_MOTO_USE    enum_PLATE_MOTO_USE   = DEFAULT_MOTO_USE;
 
 void Plate_Moto_Init(void)
 {
+
     #if IS_USE_ORIGINAL_ESC
-    if (PLATE_MOTO_USE == C620)
+    p_MotorInfo_ts    = C620_MotorInfo;
+    p_MotorInfo610_ts = C610_MotorInfo;
+
+    if (enum_PLATE_MOTO_USE == C620)
     {
         Moto_API_PID_Init_C620(g_Moto_Salve_t + 0);
         Moto_API_PID_Init_C620(g_Moto_Salve_t + 1);
         Moto_API_PID_Init_C620(g_Moto_Salve_t + 2);
         Moto_API_PID_Init_C620(g_Moto_Salve_t + 3);
     }
-    else if( PLATE_MOTO_USE == C610)
+    else if( enum_PLATE_MOTO_USE == C610)
     {
         Moto_API_PID_Init_C610(g_Moto_Salve_t + 0);
         Moto_API_PID_Init_C610(g_Moto_Salve_t + 1);
@@ -96,11 +106,11 @@ uint8_t Plate_Slave_Moto_Use_Get(void)
 void Plate_LoseFoce(void)
 {
     #if IS_USE_ORIGINAL_ESC
-     if(PLATE_MOTO_USE == C620)
+     if(enum_PLATE_MOTO_USE == C620)
     {
         C620_API_SendCurrentVal(0, 0, 0, 0);
     }
-    else if(PLATE_MOTO_USE == C610)
+    else if(enum_PLATE_MOTO_USE == C610)
     {
         C610_API_SendCurrentVal(0, 0, 0, 0);
     }
@@ -122,19 +132,19 @@ void Plate_SpeedMode(void)
         ControlPlate_API_GetSpeed(v, v+1, v+2, v+3);
         
         #if IS_USE_ORIGINAL_ESC
-        if(PLATE_MOTO_USE == C620)
+        if(enum_PLATE_MOTO_USE == C620)
         {
-            Moto_API_SetMotoInfo(g_Moto_Salve_t + 0, g_MotorInfo_t[0].velocity, 0);
-            Moto_API_SetMotoInfo(g_Moto_Salve_t + 1, g_MotorInfo_t[1].velocity, 0);
-            Moto_API_SetMotoInfo(g_Moto_Salve_t + 2, g_MotorInfo_t[2].velocity, 0);
-            Moto_API_SetMotoInfo(g_Moto_Salve_t + 3, g_MotorInfo_t[3].velocity, 0);
+            Moto_API_SetMotoInfo(g_Moto_Salve_t + 0, p_MotorInfo_ts[0].Velocity, 0);
+            Moto_API_SetMotoInfo(g_Moto_Salve_t + 1, p_MotorInfo_ts[1].Velocity, 0);
+            Moto_API_SetMotoInfo(g_Moto_Salve_t + 2, p_MotorInfo_ts[2].Velocity, 0);
+            Moto_API_SetMotoInfo(g_Moto_Salve_t + 3, p_MotorInfo_ts[3].Velocity, 0);
         }
-        else if(PLATE_MOTO_USE == C610)
+        else if(enum_PLATE_MOTO_USE == C610)
         {
-            Moto_API_SetMotoInfo(g_Moto_Salve_t + 0, g_MotorInfo610_t[0].velocity, 0);
-            Moto_API_SetMotoInfo(g_Moto_Salve_t + 1, g_MotorInfo610_t[1].velocity, 0);
-            Moto_API_SetMotoInfo(g_Moto_Salve_t + 2, g_MotorInfo610_t[2].velocity, 0);
-            Moto_API_SetMotoInfo(g_Moto_Salve_t + 3, g_MotorInfo610_t[3].velocity, 0);
+            Moto_API_SetMotoInfo(g_Moto_Salve_t + 0, p_MotorInfo610_ts[0].Velocity, 0);
+            Moto_API_SetMotoInfo(g_Moto_Salve_t + 1, p_MotorInfo610_ts[1].Velocity, 0);
+            Moto_API_SetMotoInfo(g_Moto_Salve_t + 2, p_MotorInfo610_ts[2].Velocity, 0);
+            Moto_API_SetMotoInfo(g_Moto_Salve_t + 3, p_MotorInfo610_ts[3].Velocity, 0);
 
         }
         else {}
@@ -145,11 +155,11 @@ void Plate_SpeedMode(void)
         i[2] = Moto_API_Cal_GetCurrentVelocityMode(g_Moto_Salve_t + 2, v[2]);
         i[3] = Moto_API_Cal_GetCurrentVelocityMode(g_Moto_Salve_t + 3, v[3]);
 
-        if(PLATE_MOTO_USE == C620)
+        if(enum_PLATE_MOTO_USE == C620)
         {
             C620_API_SendCurrentVal(i[0], i[1], i[2], i[3]);
         }
-        else if(PLATE_MOTO_USE == C610)
+        else if(enum_PLATE_MOTO_USE == C610)
         {
             C610_API_SendCurrentVal(i[0], i[1], i[2], i[3]);
         }
@@ -168,19 +178,19 @@ void Plate_PositionMode(void)
     {
         ControlPlate_API_GetPosition(p, p+1, p+2, p+3);
         #if IS_USE_ORIGINAL_ESC
-        if(PLATE_MOTO_USE == C620)
+        if(enum_PLATE_MOTO_USE == C620)
         {
-            Moto_API_SetMotoInfo(g_Moto_Salve_t + 0, g_MotorInfo_t[0].velocity, g_MotorInfo_t[0].position);
-            Moto_API_SetMotoInfo(g_Moto_Salve_t + 1, g_MotorInfo_t[1].velocity, g_MotorInfo_t[1].position);
-            Moto_API_SetMotoInfo(g_Moto_Salve_t + 2, g_MotorInfo_t[2].velocity, g_MotorInfo_t[2].position);
-            Moto_API_SetMotoInfo(g_Moto_Salve_t + 3, g_MotorInfo_t[3].velocity, g_MotorInfo_t[3].position);
+            Moto_API_SetMotoInfo(g_Moto_Salve_t + 0, p_MotorInfo_ts[0].Velocity, p_MotorInfo_ts[0].Position);
+            Moto_API_SetMotoInfo(g_Moto_Salve_t + 1, p_MotorInfo_ts[1].Velocity, p_MotorInfo_ts[1].Position);
+            Moto_API_SetMotoInfo(g_Moto_Salve_t + 2, p_MotorInfo_ts[2].Velocity, p_MotorInfo_ts[2].Position);
+            Moto_API_SetMotoInfo(g_Moto_Salve_t + 3, p_MotorInfo_ts[3].Velocity, p_MotorInfo_ts[3].Position);
         }
-        else if(PLATE_MOTO_USE == C610)
+        else if(enum_PLATE_MOTO_USE == C610)
         {
-            Moto_API_SetMotoInfo(g_Moto_Salve_t + 0, g_MotorInfo610_t[0].velocity, g_MotorInfo610_t[0].position);
-            Moto_API_SetMotoInfo(g_Moto_Salve_t + 1, g_MotorInfo610_t[1].velocity, g_MotorInfo610_t[1].position);
-            Moto_API_SetMotoInfo(g_Moto_Salve_t + 2, g_MotorInfo610_t[2].velocity, g_MotorInfo610_t[2].position);
-            Moto_API_SetMotoInfo(g_Moto_Salve_t + 3, g_MotorInfo610_t[3].velocity, g_MotorInfo610_t[3].position);
+            Moto_API_SetMotoInfo(g_Moto_Salve_t + 0, p_MotorInfo610_ts[0].Velocity, p_MotorInfo610_ts[0].Position);
+            Moto_API_SetMotoInfo(g_Moto_Salve_t + 1, p_MotorInfo610_ts[1].Velocity, p_MotorInfo610_ts[1].Position);
+            Moto_API_SetMotoInfo(g_Moto_Salve_t + 2, p_MotorInfo610_ts[2].Velocity, p_MotorInfo610_ts[2].Position);
+            Moto_API_SetMotoInfo(g_Moto_Salve_t + 3, p_MotorInfo610_ts[3].Velocity, p_MotorInfo610_ts[3].Position);
 
         }
        
@@ -189,10 +199,10 @@ void Plate_PositionMode(void)
         if(0)
         {
             //零位可变
-            i[0] = Moto_API_Cal_GetCurrentVelocityPositionMode(g_Moto_Salve_t + 0, g_Zero_Positon[0] + p[0], 20000);
-            i[1] = Moto_API_Cal_GetCurrentVelocityPositionMode(g_Moto_Salve_t + 1, g_Zero_Positon[1] + p[1], 20000);
-            i[2] = Moto_API_Cal_GetCurrentVelocityPositionMode(g_Moto_Salve_t + 2, g_Zero_Positon[2] + p[2], 20000);
-            i[3] = Moto_API_Cal_GetCurrentVelocityPositionMode(g_Moto_Salve_t + 3, g_Zero_Positon[3] + p[3], 20000);
+            i[0] = Moto_API_Cal_GetCurrentVelocityPositionMode(g_Moto_Salve_t + 0, g_Zero_Position[0] + p[0], 20000);
+            i[1] = Moto_API_Cal_GetCurrentVelocityPositionMode(g_Moto_Salve_t + 1, g_Zero_Position[1] + p[1], 20000);
+            i[2] = Moto_API_Cal_GetCurrentVelocityPositionMode(g_Moto_Salve_t + 2, g_Zero_Position[2] + p[2], 20000);
+            i[3] = Moto_API_Cal_GetCurrentVelocityPositionMode(g_Moto_Salve_t + 3, g_Zero_Position[3] + p[3], 20000);
         }
         else
         {
@@ -202,11 +212,11 @@ void Plate_PositionMode(void)
             i[2] = Moto_API_Cal_GetCurrentVelocityPositionMode(g_Moto_Salve_t + 2, p[2], 20000);
             i[3] = Moto_API_Cal_GetCurrentVelocityPositionMode(g_Moto_Salve_t + 3, p[3], 20000);
         }
-        if(PLATE_MOTO_USE == C620)
+        if(enum_PLATE_MOTO_USE == C620)
         {
             C620_API_SendCurrentVal(i[0], i[1], i[2], i[3]);
         }
-        else if(PLATE_MOTO_USE == C610)
+        else if(enum_PLATE_MOTO_USE == C610)
         {
             C610_API_SendCurrentVal(i[0], i[1], i[2], i[3]);
         }
@@ -226,11 +236,11 @@ void Plate_CurrentMode(void)
         ControlPlate_API_GetCurrent(i, i+1, i+2, i+3);
         
         #if IS_USE_ORIGINAL_ESC
-        if(PLATE_MOTO_USE == C620)
+        if(enum_PLATE_MOTO_USE == C620)
         {
             C620_API_SendCurrentVal(i[0], i[1], i[2], i[3]);
         }
-        else if(PLATE_MOTO_USE == C610)
+        else if(enum_PLATE_MOTO_USE == C610)
         {
             C610_API_SendCurrentVal(i[0], i[1], i[2], i[3]);
         }
@@ -247,27 +257,27 @@ void Plate_Set_Zore_Position(uint8_t mode, int32_t *pPosition)
 {
     if (mode == 0)
     {
-        g_Zero_Positon[0] = * (pPosition + 0) ;
-        g_Zero_Positon[1] = * (pPosition + 1) ;
-        g_Zero_Positon[2] = * (pPosition + 2) ;
-        g_Zero_Positon[3] = * (pPosition + 3) ;
+        g_Zero_Position[0] = * (pPosition + 0) ;
+        g_Zero_Position[1] = * (pPosition + 1) ;
+        g_Zero_Position[2] = * (pPosition + 2) ;
+        g_Zero_Position[3] = * (pPosition + 3) ;
     }
     else if(mode == 1)
     {
         #if IS_USE_ORIGINAL_ESC
-        if(PLATE_MOTO_USE == C620)
+        if(enum_PLATE_MOTO_USE == C620)
         {
-            g_MotorInfo_t[0].position = 0;
-            g_MotorInfo_t[1].position = 0;
-            g_MotorInfo_t[2].position = 0;
-            g_MotorInfo_t[3].position = 0;
+            p_MotorInfo_ts[0].Position = 0;
+            p_MotorInfo_ts[1].Position = 0;
+            p_MotorInfo_ts[2].Position = 0;
+            p_MotorInfo_ts[3].Position = 0;
         }
-        else if(PLATE_MOTO_USE == C610)
+        else if(enum_PLATE_MOTO_USE == C610)
         {
-            g_MotorInfo610_t[0].position = 0;
-            g_MotorInfo610_t[1].position = 0;
-            g_MotorInfo610_t[2].position = 0;
-            g_MotorInfo610_t[3].position = 0;
+            p_MotorInfo610_ts[0].Position = 0;
+            p_MotorInfo610_ts[1].Position = 0;
+            p_MotorInfo610_ts[2].Position = 0;
+            p_MotorInfo610_ts[3].Position = 0;
         }
         #else
         /*移植时用*/
@@ -280,25 +290,25 @@ void Plate_Set_Zore_Position(uint8_t mode, int32_t *pPosition)
 void Plate_AngleMode(void)
 {
     int32_t angle[4] = {0};
-  //  int16_t i[4] = {0};
+    int16_t i[4] = {0};
     if((g_ControlPlateRx_t.cmd & 0x0F) == PLATE_CMD_POSITION34)
     {
         ControlPlate_API_GetPosition(angle, angle+1, angle+2, angle+3);
         
         #if IS_USE_ORIGINAL_ESC
-        if(PLATE_MOTO_USE == C620)
+        if(enum_PLATE_MOTO_USE == C620)
         {
-            Moto_API_SetMotoInfo(g_Moto_Salve_t + 0, g_MotorInfo_t[0].velocity, g_MotorInfo_t[0].position);
-            Moto_API_SetMotoInfo(g_Moto_Salve_t + 1, g_MotorInfo_t[1].velocity, g_MotorInfo_t[1].position);
-            Moto_API_SetMotoInfo(g_Moto_Salve_t + 2, g_MotorInfo_t[2].velocity, g_MotorInfo_t[2].position);
-            Moto_API_SetMotoInfo(g_Moto_Salve_t + 3, g_MotorInfo_t[3].velocity, g_MotorInfo_t[3].position);
-        }
-        else if(PLATE_MOTO_USE == C610)
+            Moto_API_SetMotoInfo(g_Moto_Salve_t + 0, p_MotorInfo_ts[0].Velocity, p_MotorInfo_ts[0].Position);
+            Moto_API_SetMotoInfo(g_Moto_Salve_t + 1, p_MotorInfo_ts[1].Velocity, p_MotorInfo_ts[1].Position);
+            Moto_API_SetMotoInfo(g_Moto_Salve_t + 2, p_MotorInfo_ts[2].Velocity, p_MotorInfo_ts[2].Position);
+            Moto_API_SetMotoInfo(g_Moto_Salve_t + 3, p_MotorInfo_ts[3].Velocity, p_MotorInfo_ts[3].Position);
+        }                                                                                         
+        else if(enum_PLATE_MOTO_USE == C610)
         {
-            Moto_API_SetMotoInfo(g_Moto_Salve_t + 0, g_MotorInfo610_t[0].velocity, g_MotorInfo610_t[0].position);
-            Moto_API_SetMotoInfo(g_Moto_Salve_t + 1, g_MotorInfo610_t[1].velocity, g_MotorInfo610_t[1].position);
-            Moto_API_SetMotoInfo(g_Moto_Salve_t + 2, g_MotorInfo610_t[2].velocity, g_MotorInfo610_t[2].position);
-            Moto_API_SetMotoInfo(g_Moto_Salve_t + 3, g_MotorInfo610_t[3].velocity, g_MotorInfo610_t[3].position);
+            Moto_API_SetMotoInfo(g_Moto_Salve_t + 0, p_MotorInfo610_ts[0].Velocity, p_MotorInfo610_ts[0].Position);
+            Moto_API_SetMotoInfo(g_Moto_Salve_t + 1, p_MotorInfo610_ts[1].Velocity, p_MotorInfo610_ts[1].Position);
+            Moto_API_SetMotoInfo(g_Moto_Salve_t + 2, p_MotorInfo610_ts[2].Velocity, p_MotorInfo610_ts[2].Position);
+            Moto_API_SetMotoInfo(g_Moto_Salve_t + 3, p_MotorInfo610_ts[3].Velocity, p_MotorInfo610_ts[3].Position);
 
         }
 
@@ -311,11 +321,11 @@ void Plate_AngleMode(void)
         i[3] = Moto_API_Cal_GetCurrentVelocityPositionMode(g_Moto_Salve_t + 3, angle[3]*ANGLE_RATIO, 20000);
         
         
-        if(PLATE_MOTO_USE == C620)
+        if(enum_PLATE_MOTO_USE == C620)
         {
             C620_API_SendCurrentVal(i[0], i[1], i[2], i[3]);
         }
-        else if(PLATE_MOTO_USE == C610)
+        else if(enum_PLATE_MOTO_USE == C610)
         {
             C610_API_SendCurrentVal(i[0], i[1], i[2], i[3]);
         }
@@ -398,26 +408,27 @@ void Plate_Slave_Can_Control_Deal(void)
 
 void Plate_Slave_Task(void)
 {
-#if COULD_SALVE_CONTROL_MOTO       
-    if(g_slave_run_flag == 0)
-    {
-        Plate_LoseFoce();
-        return;
-    }
     
-    if     (enum_PLATE_SLAVE_MODE == PLATE_SLAVE_MODE_NONE    ) Plate_LoseFoce();
-    else if(enum_PLATE_SLAVE_MODE == PLATE_SLAVE_MODE_SPEED   ) Plate_SpeedMode();
-    else if(enum_PLATE_SLAVE_MODE == PLATE_SLAVE_MODE_CURRENT ) Plate_CurrentMode();
-    else if(enum_PLATE_SLAVE_MODE == PLATE_SLAVE_MODE_POSITION) Plate_PositionMode();
-    else if(enum_PLATE_SLAVE_MODE == PLATE_SLAVE_MODE_SPCA    ) Plate_SCPA_Mode(); 
-#endif                                               
+    
+    
+    #if COULD_SALVE_CONTROL_MOTO       
+        if(g_slave_run_flag == 0)
+        {
+            Plate_LoseFoce();
+            return;
+        }
         
-  //  else if(PLATE_SLAVE_MODE == PLATE_SLAVE_MODE_LOOPBACK) Plate_Slave_LoopBackMode();
+        if     (enum_PLATE_SLAVE_MODE == PLATE_SLAVE_MODE_NONE    ) Plate_LoseFoce();
+        else if(enum_PLATE_SLAVE_MODE == PLATE_SLAVE_MODE_SPEED   ) Plate_SpeedMode();
+        else if(enum_PLATE_SLAVE_MODE == PLATE_SLAVE_MODE_CURRENT ) Plate_CurrentMode();
+        else if(enum_PLATE_SLAVE_MODE == PLATE_SLAVE_MODE_POSITION) Plate_PositionMode();
+        else if(enum_PLATE_SLAVE_MODE == PLATE_SLAVE_MODE_SPCA    ) Plate_SCPA_Mode(); 
+    #endif                                               
+        
+    else if(enum_PLATE_SLAVE_MODE == PLATE_SLAVE_MODE_LOOPBACK) Plate_Slave_LoopBackMode();
     if     (enum_PLATE_SLAVE_MODE == PLATE_SLAVE_MODE_NONE    ) Plate_Slave_NoneMode();
     
     else;
-    
-    
 } 
 
 
@@ -426,20 +437,20 @@ void Plate_Slave_Test(void)
     static uint8_t i = 0, j = 0;
 //    uint8_t s[9] = {0};
     delay_ms(1);
-   /*
+   
     ControlPlate_API_SendMotoSpeed   (DEFAULT_PLATE_ID, i, i, i, i);
                                     delay_us(50);
     ControlPlate_API_SendMotoCurrent (DEFAULT_PLATE_ID, i+1, i, i, i);
                                     delay_us(50);
-    ControlPlate_API_SendMotoPosition(DEFAULT_PLATE_ID, i+2, i, i, i);
+  //  ControlPlate_API_SendMotoPosition(DEFAULT_PLATE_ID, i+2, i, i, i);
                                     delay_us(50);
-    */
+    
   // ControlPlate_API_SendMotoAngle   (DEFAULT_PLATE_ID, i+3, i, i, i);
                                     delay_us(50);
   // ControlPlate_API_OnlineSend      (PLATE_ID_ALL);
                                     delay_us(50);
   //
-  // ControlPlate_API_Plate_Config(g_PLATE_ID,CONTROL_CHANGE_PLATE_ID        , i);delay_ms(1);
+   ControlPlate_API_Plate_Config(g_PLATE_ID,CONTROL_CHANGE_PLATE_ID        , i);delay_ms(1);
     
   // ControlPlate_API_Plate_Config(g_PLATE_ID,CONTROL_CHANGE_CONNECT_CAN     , j);delay_ms(1);
   // ControlPlate_API_Plate_Config(g_PLATE_ID,CONTROL_CHANGE_SLAVE_MODE      , j);delay_ms(1);
@@ -460,7 +471,7 @@ void Plate_Slave_Test(void)
 
 
 
-
+#endif
 
 
 

@@ -428,11 +428,6 @@
               <FileType>1</FileType>
               <FilePath>.\init.c</FilePath>
             </File>
-            <File>
-              <FileName>free_rtos_test.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\free_rtos_test.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -843,6 +838,11 @@
         <Group>
           <GroupName>USE_DEMO</GroupName>
           <Files>
+            <File>
+              <FileName>free_rtos_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\free_rtos_test.c</FilePath>
+            </File>
             <File>
               <FileName>demo_moto.c</FileName>
               <FileType>1</FileType>
