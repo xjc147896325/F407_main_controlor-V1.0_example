@@ -32,6 +32,7 @@ void System_Init(void)
 	
 	
 	USART2_Init(115200);
+	USART6_Init(115200);
 	
 	
 	TIM2_Init(8399,9);
@@ -39,11 +40,12 @@ void System_Init(void)
 	TIM4_PWM_Init(499, 83, GPIOB, GPIO_Pin_7);
 	TIM14_PWM_Init(499, 83, GPIOA, GPIO_Pin_7);
 	
-	Serial_Send(Serial1,"ready %s \r\n",&s);
 	
 //	drv_spi_init();
 //	Laser_Init();
 	LED_Init();
+	
+	Serial_Send(Serial1,"ready %s \r\n",&s);
 	
 	delay_ms(500);
 	

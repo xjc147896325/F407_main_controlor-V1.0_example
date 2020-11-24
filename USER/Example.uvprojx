@@ -707,6 +707,11 @@
               <FileType>1</FileType>
               <FilePath>..\ALGORITHM\TRANSMIT\transmit.c</FilePath>
             </File>
+            <File>
+              <FileName>gyro.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ALGORITHM\GYRO\gyro.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

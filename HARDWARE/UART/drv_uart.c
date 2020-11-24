@@ -144,8 +144,8 @@ void USART6_Init( uint32_t BaudRate)
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC,ENABLE);
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART6,ENABLE);
 	
-	GPIO_PinAFConfig(GPIOC,GPIO_PinSource6,GPIO_AF_USART1);
-	GPIO_PinAFConfig(GPIOC,GPIO_PinSource7,GPIO_AF_USART1);
+	GPIO_PinAFConfig(GPIOC,GPIO_PinSource6,GPIO_AF_USART6);
+	GPIO_PinAFConfig(GPIOC,GPIO_PinSource7,GPIO_AF_USART6);
 	
 	GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_6 | GPIO_Pin_7;
 	GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_AF;

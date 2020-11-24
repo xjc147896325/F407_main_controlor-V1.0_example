@@ -42,6 +42,7 @@
 #include "bsp_ad7190.h"
 #include "bsp_joystick.h"
 #include "transmit.h"
+#include "gyro.h"
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/

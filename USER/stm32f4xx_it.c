@@ -207,9 +207,14 @@ void USART3_IRQHandler(void)
   */
 void USART6_IRQHandler(void)
 {
+	uint8_t RxData;	
+
 	if(USART_GetFlagStatus(USART6, USART_IT_RXNE) != RESET);
 	{
 		USART_ClearITPendingBit(USART6, USART_IT_RXNE);
+		RxData = USART_ReceiveData(USART6);
+
+		Get_Gyro_Info(RxData);
 	}
 }
 
