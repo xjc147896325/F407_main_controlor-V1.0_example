@@ -179,117 +179,117 @@ void RemoteAnalyzeTask(void)
 
 int16_t Remote_GetLX(void)
 {
-	return *((volatile int16_t*)&Remote.LX);
+	return Remote.LX;
 }
 
 int16_t Remote_GetRX(void)
 {
-	return *((volatile int16_t*)&Remote.RX);
+	return Remote.RX;
 }
 
 int16_t Remote_GetLY(void)
 {
-	return *((volatile int16_t*)&Remote.LY);
+	return Remote.LY;
 }
 
 int16_t Remote_GetRY(void)
 {
-	return *((volatile int16_t*)&Remote.RY);
+	return Remote.RY;
 }
 
 int16_t Remote_GetV1(void)
 {
-	return *((volatile int16_t*)&Remote.V1);
+	return Remote.V1;
 }
 
 int16_t Remote_GetV2(void)
 {
-	return *((volatile int16_t*)&Remote.V2);
+	return Remote.V2;
 }
 
 int16_t Remote_GetV3(void)
 {
-	return *((volatile int16_t*)&Remote.V3);
+	return Remote.V3;
 }
 
 int16_t Remote_GetKEY1(void)
 {
-	return *((volatile int16_t*)&Remote.KEY1);
+	return Remote.KEY1;
 }
 
 int16_t Remote_GetKEY2(void)
 {
-	return *((volatile int16_t*)&Remote.KEY2);
+	return Remote.KEY2;
 }
 
 int16_t Remote_GetKEY3(void)
 {
-	return *((volatile int16_t*)&Remote.KEY3);
+	return Remote.KEY3;
 }
 
 int16_t Remote_GetKEY4(void)
 {
-	return *((volatile int16_t*)&Remote.KEY4);
+	return Remote.KEY4;
 }
 
 int16_t Remote_GetKEY5(void)
 {
-	return *((volatile int16_t*)&Remote.KEY5);
+	return Remote.KEY5;
 }
 
 int16_t Remote_GetKEY6(void)
 {
-	return *((volatile int16_t*)&Remote.KEY6);
+	return Remote.KEY6;
 }
 
 int16_t Remote_GetKEY7(void)
 {
-	return *((volatile int16_t*)&Remote.KEY7);
+	return Remote.KEY7;
 }
 
 int16_t Remote_GetKEY8(void)
 {
-	return *((volatile int16_t*)&Remote.KEY8);
+	return Remote.KEY8;
 }
 
 int16_t Remote_GetKEY9(void)
 {
-	return *((volatile int16_t*)&Remote.KEY9);
+	return Remote.KEY9;
 }
 
 int16_t Remote_GetKEY10(void)
 {
-	return *((volatile int16_t*)&Remote.KEY10);
+	return Remote.KEY10;
 }
 
 int16_t Remote_GetKEY11(void)
 {
-	return *((volatile int16_t*)&Remote.KEY11);
+	return Remote.KEY11;
 }
 
 int16_t Remote_GetKEY12(void)
 {
-	return *((volatile int16_t*)&Remote.KEY12);
+	return Remote.KEY12;
 }
 
 int16_t Remote_GetKEY13(void)
 {
-	return *((volatile int16_t*)&Remote.KEY13);
+	return Remote.KEY13;
 }
 
 int16_t Remote_GetKEY14(void)
 {
-	return *((volatile int16_t*)&Remote.KEY14);
+	return Remote.KEY14;
 }
 
 int16_t Remote_GetKEY15(void)
 {
-	return *((volatile int16_t*)&Remote.KEY15);
+	return Remote.KEY15;
 }
 
 int16_t Remote_GetKEY16(void)
 {
-	return *((volatile int16_t*)&Remote.KEY16);
+	return Remote.KEY16;
 }
 
 void UnPack(void)
