@@ -58,7 +58,7 @@ void Get_Gyro_Info(uint8_t Rxbuf)
 							Temp[i] = 0;
 						}
 						//Serial_Send(Serial1,"Gyro_Info.Gyro_Message = %d \r\n", Gyro_Info.Gyro_Message);    //OK
-						Serial_Send(Serial1,"Gyro_Info.Angular_velocity_z = %f \r\n", Gyro_Info.Angular_velocity_z);    //OK
+						//Serial_Send(Serial1,"Gyro_Info.Angular_velocity_z = %f \r\n", Gyro_Info.Angular_velocity_z);    //OK
 
 					}
 					else
